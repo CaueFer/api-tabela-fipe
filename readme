@@ -1,7 +1,9 @@
 USE
 
-npm install express axios
+install node in => https://nodejs.org/en/download
+
+inside terminal execute => npm install express axios
 
 RUN
 
-node main.js
+to run execute => node main.js
