@@ -25,7 +25,10 @@ async function getModelos() {
 async function getVeiculos() {
   const resultadosTotais = [];
 
-  for (let i = 0; i < 10; i++) {
+  const initialValue = 0
+  const finalValue = 10
+
+  for (let i = initialValue; i < finalValue; i++) {
     const modelo = modelos[i];
 
     const base_url = `https://parallelum.com.br/fipe/api/v1/carros/marcas/59/modelos/${modelo}/anos/`;
