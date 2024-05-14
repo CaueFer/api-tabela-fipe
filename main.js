@@ -25,8 +25,8 @@ async function getModelos() {
 async function getVeiculos() {
   const resultadosTotais = [];
 
-  const initialValue = 0;
-  const finalValue = 30;
+  const initialValue = 91;
+  const finalValue = 120;
 
   for (let i = initialValue; i < finalValue; i++) {
     const modelo = modelos[i];
