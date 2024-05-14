@@ -25,34 +25,39 @@ async function getModelos() {
 async function getVeiculos() {
   const resultadosTotais = [];
 
-  const initialValue = 0
-  const finalValue = 10
+  const initialValue = 31
+  const finalValue = 61
 
   for (let i = initialValue; i < finalValue; i++) {
     const modelo = modelos[i];
 
-    const base_url = `https://parallelum.com.br/fipe/api/v1/carros/marcas/59/modelos/${modelo}/anos/`;
+    if (modelos[i]) {
+      const base_url = `https://parallelum.com.br/fipe/api/v1/carros/marcas/${marca}/modelos/${modelo}/anos/`;
 
-    try {
-      const response = await axios.get(base_url);
+      try {
+        const response = await axios.get(base_url);
 
-      const codigos = response.data.map((item) => item.codigo);
+        const codigos = response.data.map((item) => item.codigo);
 
-      const resultados = [];
+        const resultados = [];
 
-      for (let codigo of codigos) {
-        try {
-          const response = await axios.get(base_url + codigo);
-          resultados.push(response.data);
-        } catch (error) {
-          console.error("Erro ao fazer solicitação:", error);
+        for (let codigo of codigos) {
+          try {
+            const response = await axios.get(base_url + codigo);
+            resultados.push(response.data);
+          } catch (error) {
+            
+            console.error("Erro ao fazer solicitação:", error);
+          }
         }
-      }
 
-      resultadosTotais.push(...resultados);
-    } catch (error) {
-      console.error("Erro ao fazer solicitação:", error);
+        resultadosTotais.push(...resultados);
+      } catch (error) {
+        console.error("Erro ao fazer solicitação:", error);
+      }
     }
+
+
   }
 
   return resultadosTotais;
