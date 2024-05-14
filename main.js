@@ -25,8 +25,8 @@ async function getModelos() {
 async function getVeiculos() {
   const resultadosTotais = [];
 
-  const initialValue = 31
-  const finalValue = 61
+  const initialValue = 0;
+  const finalValue = 30;
 
   for (let i = initialValue; i < finalValue; i++) {
     const modelo = modelos[i];
@@ -57,7 +57,6 @@ async function getVeiculos() {
       }
     }
 
-
   }
 
   return resultadosTotais;
@@ -74,7 +73,7 @@ app.listen(PORT, async () => {
     const resultados = await getVeiculos();
 
     await fs.appendFile("resultados.json", JSON.stringify(resultados, null, 2));
-    console.log("Resultados gravados em resultados.json");
+    console.log("Resultados gravados com sucesso");
   } catch (error) {
     console.error("Erro ao automatizar a consulta:", error);
   }
